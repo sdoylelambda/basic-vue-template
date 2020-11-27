@@ -2,31 +2,17 @@
   <div>
     <SliderComponent :text="sliderText" :home="sliderHome" />
     <div class="center">
-
+      
       <section id="content">
-        <h2 class="subheader">Últimos artículos</h2>
+        <h2 class="subheader">Últimas Entradas</h2>
 
-        <!--Listado articulos-->
-        <div id="articles">
-          <article class="article-item" id="article-template">
-            <div class="image-wrap">
-              <img
-                src="https://unhabitatmejor.leroymerlin.es/sites/default/files/styles/header_category/public/2018-10/4%20paisaje%20macedonia.jpg?itok=AELknmF8"
-                alt="Paisaje"
-              />
-            </div>
-
-            <h2>Articulo de prueba</h2>
-            <span class="date"> Hace 5 minutos </span>
-            <a href="#">Leer más</a>
-
-            <div class="clearfix"></div>
-          </article>
-
-          <!--AÑADIR ARTICULOS VIA JS-->
+        <div id="articles" v-if="lastArticles[0] !== undefined">
+          <div v-for="article in lastArticles" :key="article._id">
+            <ArticleMinComponent :article="article" />
+          </div>
         </div>
       </section>
-      
+
       <SidebarComponent />
       <div class="clearfix"></div>
     </div>
@@ -34,21 +20,41 @@
 </template>
 
 <script>
-import SliderComponent from '../reuse/SliderComponent.vue';
-import SidebarComponent from '../reuse/SidebarComponent.vue';
+// Services
+import ArticleService from "../../services/ArticleService";
+// Child components
+import SliderComponent from "../reuse/SliderComponent.vue";
+import SidebarComponent from "../reuse/SidebarComponent.vue";
+import ArticleMinComponent from "../reuse/ArticleMinComponent.vue";
 
 export default {
   name: "HomeComponent",
   components: {
     SliderComponent,
-    SidebarComponent
+    SidebarComponent,
+    ArticleMinComponent,
+  },
+  mounted() {
+    this.articleService = new ArticleService();
+    this.getLastArticles();
   },
   data() {
     return {
       sliderText: "Welcome to the Vue Test",
-      sliderHome: true
-    }
-  }
+      sliderHome: true,
+      articleService: null,
+      lastArticles: [],
+    };
+  },
+  methods: {
+    getLastArticles() {
+      this.articleService.getLastArticles().then((response) => {
+        if (response.data.status === "success") {
+          this.lastArticles = response.data.articles;
+        }
+      });
+    },
+  },
 };
 </script>
 

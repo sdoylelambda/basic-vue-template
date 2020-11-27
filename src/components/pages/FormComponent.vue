@@ -82,7 +82,7 @@
 <script>
 // Form validation
 import { required, minLength } from "vuelidate/lib/validators";
-
+// Child components
 import SidebarComponent from "../reuse/SidebarComponent.vue";
 
 export default {
