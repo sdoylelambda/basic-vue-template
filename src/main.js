@@ -15,6 +15,8 @@ import FormComponent from './components/pages/FormComponent.vue';
 import PageComponent from './components/pages/PageComponent.vue';
 import ErrorComponent from './components/pages/ErrorComponent.vue';
 import MoviesComponent from './components/pages/MoviesComponent.vue';
+import SearchComponent from './components/pages/SearchComponent.vue';
+import RedirectSearchComponent from './components/reuse/RedirectSearchComponent.vue';
 
 Vue.config.productionTip = false
 
@@ -32,6 +34,8 @@ const routes = [
   {path: '/form', name: 'form', component: FormComponent},
   {path: '/page/:id?', name: 'page', component: PageComponent},
   {path: '/movies', name: 'movies', component: MoviesComponent},
+  {path: '/redirect/:searchTerm', name: 'redirect', component: RedirectSearchComponent},
+  {path: '/search/:searchTerm', name: 'search', component: SearchComponent},
   {path: '/', component: HomeComponent},
   {path: '*', component: ErrorComponent}
 ];

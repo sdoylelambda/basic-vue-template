@@ -17,30 +17,22 @@
             <router-link to="/blog" active-class="active">Blog</router-link>
           </li>
           <li>
-            <router-link to="/form" active-class="active"
-              >Formulario</router-link
-            >
+            <router-link to="/form" active-class="active">Formulario</router-link>
           </li>
           <li>
             <router-link
               :to="{ name: 'movies', params: {} }"
-              active-class="active"
-              >Movies</router-link
-            >
+              active-class="active">Movies</router-link>
           </li>
           <li>
             <router-link
               :to="{ name: 'page', params: { id: '1' } }"
-              active-class="active"
-              >Test 1</router-link
-            >
+              active-class="active">Test 1</router-link>
           </li>
           <li>
             <router-link
               :to="{ name: 'hello', params: {} }"
-              active-class="active"
-              >Test 2</router-link
-            >
+              active-class="active">Test 2</router-link>
           </li>
         </ul>
       </nav>

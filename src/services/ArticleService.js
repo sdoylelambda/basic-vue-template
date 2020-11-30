@@ -16,5 +16,9 @@ export default class ArticleService {
     getLastArticles() {
         return axios.get(this.api_url + "/articles/true");
     }
+    
+    getSearchArticles(searchTerm) {
+        return axios.get(this.api_url + "/search/" + searchTerm);
+    }
 
 }
