@@ -17,9 +17,11 @@ import ErrorComponent from './components/pages/ErrorComponent.vue';
 import MoviesComponent from './components/pages/MoviesComponent.vue';
 import SearchComponent from './components/pages/SearchComponent.vue';
 import RedirectSearchComponent from './components/reuse/RedirectSearchComponent.vue';
+import ArticleComponent from './components/pages/ArticleComponent.vue';
 
 Vue.config.productionTip = false
 
+// Global Libraries
 // Router
 Vue.use(VueRouter);
 // Form Validation
@@ -36,6 +38,7 @@ const routes = [
   {path: '/movies', name: 'movies', component: MoviesComponent},
   {path: '/redirect/:searchTerm', name: 'redirect', component: RedirectSearchComponent},
   {path: '/search/:searchTerm', name: 'search', component: SearchComponent},
+  {path: '/article/:articleId', name: 'article', component: ArticleComponent},
   {path: '/', component: HomeComponent},
   {path: '*', component: ErrorComponent}
 ];

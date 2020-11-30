@@ -17,8 +17,12 @@ export default class ArticleService {
         return axios.get(this.api_url + "/articles/true");
     }
     
-    getSearchArticles(searchTerm) {
+    getSearchArticles( searchTerm ) {
         return axios.get(this.api_url + "/search/" + searchTerm);
+    }
+
+    getArticle( articleId ) {
+        return axios.get(this.api_url + "/article/" + articleId);
     }
 
 }

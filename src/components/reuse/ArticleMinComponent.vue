@@ -15,7 +15,7 @@
 
     <h2>{{ article.title }}</h2>
     <span class="date"> {{ article.date | moment('from', 'now') }} </span>
-    <a href="#">Leer más</a>
+    <router-link :to="{ name: 'article', params: {articleId: article._id} }">Leer más</router-link>
 
     <div class="clearfix"></div>
   </article>
@@ -30,7 +30,7 @@ export default {
   props: ["article"],
   data() {
     return {
-      api_url: Global.api_url,
+      api_url: Global.api_url
     };
   },
 };
