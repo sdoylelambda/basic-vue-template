@@ -2,14 +2,19 @@
   <div>
     <SliderComponent :text="sliderText" :home="sliderHome" />
     <div class="center">
-      
       <section id="content">
         <h2 class="subheader">Últimas Entradas</h2>
 
-        <div id="articles" v-if="lastArticles[0] !== undefined">
+        <div id="articles" v-if="lastArticles && lastArticles.length > 0">
           <div v-for="article in lastArticles" :key="article._id">
             <ArticleMinComponent :article="article" />
           </div>
+        </div>
+        <div v-else-if="lastArticles && lastArticles.length < 1">
+          <p>There is no articles</p>
+        </div>
+        <div v-else>
+          <p>Loading...</p>
         </div>
       </section>
 
@@ -43,7 +48,7 @@ export default {
       sliderText: "Welcome to the Vue Test",
       sliderHome: true,
       articleService: null,
-      lastArticles: [],
+      lastArticles: null,
     };
   },
   methods: {

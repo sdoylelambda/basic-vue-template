@@ -3,6 +3,9 @@ import App from './App.vue';
 // External
 import VueRouter from 'vue-router';
 import Vuelidate from 'vuelidate';
+import VueMoment from 'vue-moment';  // Date format
+import moment from 'moment'; // Spanish config for moment
+import 'moment/locale/es'; // Spanish config for moment
 
 // Routes
 import HomeComponent from './components/pages/HomeComponent.vue';
@@ -19,6 +22,8 @@ Vue.config.productionTip = false
 Vue.use(VueRouter);
 // Form Validation
 Vue.use(Vuelidate);
+// Date format
+Vue.use(VueMoment, {moment});
 
 const routes = [
   {path: '/home', name: 'home', component: HomeComponent},

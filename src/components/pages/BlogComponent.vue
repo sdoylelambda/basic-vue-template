@@ -1,13 +1,18 @@
 <template>
   <div class="center">
-
     <section id="content">
       <h2 class="subheader">Blog</h2>
 
-      <div id="articles" v-if="articles[0] !== undefined">
+      <div id="articles" v-if="articles && articles.length > 0">
         <div v-for="article in articles" :key="article._id">
           <ArticleMinComponent :article="article" />
         </div>
+      </div>
+      <div v-else-if="articles && articles.length < 1">
+        <p>There is no articles</p>
+      </div>
+      <div v-else>
+        <p>Loading...</p>
       </div>
     </section>
 
@@ -37,7 +42,7 @@ export default {
   data() {
     return {
       articleService: null,
-      articles: [],
+      articles: null,
     };
   },
   methods: {
@@ -47,7 +52,7 @@ export default {
           this.articles = response.data.articles;
         }
       });
-    }
+    },
   },
 };
 </script>
